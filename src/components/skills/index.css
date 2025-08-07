@@ -1,0 +1,148 @@
+/* Skills Section Base Styles */
+.skills {
+  position: relative;
+}
+
+.section__header {
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.section__title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 1rem;
+}
+
+.section__subtitle {
+  color: var(--color-muted);
+  font-size: 1.1rem;
+}
+
+/* Skills Container */
+.skills__container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Skill Card */
+.skill__card {
+  background: var(--color-ui-2);
+  border-radius: var(--border-radius-3);
+  padding: 1.5rem;
+  transition: var(--transition);
+  box-shadow: var(--border-shadow);
+}
+
+.skill__card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(var(--color-primary-rgb), 0.1);
+}
+
+/* Skill Header */
+.skill__header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.skill__icon {
+  font-size: 2rem;
+  min-width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.skill__title h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.3rem;
+}
+
+.skill__title span {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+}
+
+/* Progress Bar */
+.progress__container {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  margin-top: 1rem;
+  position: relative;
+}
+
+.progress__bar {
+  height: 100%;
+  border-radius: 10px;
+  position: relative;
+  transition: width 1.5s ease-out;
+}
+
+.progress__value {
+  position: absolute;
+  right: 0;
+  top: -25px;
+  font-size: 0.8rem;
+  color: var(--color-muted);
+}
+
+/* Animation for progress bars */
+.skills__container .skill__card:nth-child(1) .progress__bar {
+  animation: progressAnimation 1.5s ease-out forwards;
+}
+.skills__container .skill__card:nth-child(2) .progress__bar {
+  animation: progressAnimation 1.5s ease-out 0.2s forwards;
+}
+.skills__container .skill__card:nth-child(3) .progress__bar {
+  animation: progressAnimation 1.5s ease-out 0.4s forwards;
+}
+.skills__container .skill__card:nth-child(4) .progress__bar {
+  animation: progressAnimation 1.5s ease-out 0.6s forwards;
+}
+.skills__container .skill__card:nth-child(5) .progress__bar {
+  animation: progressAnimation 1.5s ease-out 0.8s forwards;
+}
+.skills__container .skill__card:nth-child(6) .progress__bar {
+  animation: progressAnimation 1.5s ease-out 1s forwards;
+}
+
+@keyframes progressAnimation {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .skills__container {
+    grid-template-columns: 1fr;
+  }
+  
+  .skill__card {
+    padding: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section__header {
+    margin-bottom: 2rem;
+  }
+  
+  .skill__header {
+    gap: 0.8rem;
+  }
+  
+  .skill__icon {
+    font-size: 1.5rem;
+    min-width: 40px;
+    height: 40px;
+  }
+}

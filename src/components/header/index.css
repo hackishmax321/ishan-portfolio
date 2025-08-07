@@ -1,0 +1,226 @@
+/* Header Base Styles */
+.header {
+  padding: 6rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.header-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Typography */
+.header-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.header-subtitle {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+  min-height: 4.5rem;
+  min-width:  8rem;
+}
+
+.header-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--color-muted);
+  margin-bottom: 2.5rem;
+  max-width: 90%;
+}
+
+.text-gradient {
+  display: block;
+  background: linear-gradient(
+    to right,
+    var(--color-primary) 0%,
+    var(--color-white) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-muted {
+  color: var(--color-muted);
+}
+
+/* Rotating Text Animation */
+.text-rotate {
+  position: relative;
+  display: inline-block;
+}
+
+.text-rotate span {
+  position: absolute;
+  top: -25px;
+  opacity: 0;
+  overflow: hidden;
+  color: var(--color-primary);
+  animation: rotateWord 12s linear infinite 0s;
+}
+
+.text-rotate span:nth-child(2) {
+  animation-delay: 3s;
+}
+.text-rotate span:nth-child(3) {
+  animation-delay: 6s;
+}
+
+@keyframes rotateWord {
+  0% { opacity: 0; }
+  2% { opacity: 0; transform: translateY(-20px); }
+  5% { opacity: 1; transform: translateY(0px); }
+  27% { opacity: 1; transform: translateY(0px); }
+  30% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 0; }
+}
+
+/* Buttons */
+.header-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 0.8rem 1.5rem;
+  border-radius: var(--border-radius-5);
+  font-size: 1rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: var(--transition);
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(var(--color-primary-rgb), 0.2);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-text);
+  border: 1px solid var(--color-muted);
+}
+
+.btn-outline:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transform: translateY(-3px);
+}
+
+.icon-right {
+  transition: var(--transition);
+}
+
+.btn:hover .icon-right {
+  transform: translateX(3px);
+}
+
+/* Image Styles */
+.header-image {
+  position: relative;
+  z-index: 1;
+}
+
+.image-wrapper {
+  position: relative;
+  border-radius: var(--border-radius-3);
+  overflow: hidden;
+  aspect-ratio: 1/1;
+  max-width: 400px;
+  margin-left: auto;
+}
+
+.developer-image {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(20%) contrast(110%);
+  transition: var(--transition);
+}
+
+.glow-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at center,
+    rgba(var(--color-primary-rgb), 0.4) 0%,
+    transparent 70%
+  );
+  z-index: 1;
+  animation: pulse 8s infinite alternate;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.4; }
+  100% { opacity: 0.7; }
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .header-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .header-image {
+    order: -1;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
+  .header-content {
+    text-align: center;
+  }
+  
+  .header-description {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .header-actions {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .header {
+    padding: 4rem 1.5rem;
+  }
+  
+  .header-actions {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
