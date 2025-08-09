@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import './index.css';
-import { FiGithub, FiExternalLink, FiChevronRight, FiX } from 'react-icons/fi';
+import { FiGithub, FiExternalLink, FiChevronRight, FiX, FiImage } from 'react-icons/fi';
 import projects from '../../data/Projects';
 
 function Projects() {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [imageErrors, setImageErrors] = useState({});
 
   const openImageModal = (imageUrl) => {
     setSelectedImage(imageUrl);
@@ -12,6 +13,13 @@ function Projects() {
 
   const closeImageModal = () => {
     setSelectedImage(null);
+  };
+
+  const handleImageError = (projectId, imageIndex) => {
+    setImageErrors(prev => ({
+      ...prev,
+      [`${projectId}-${imageIndex}`]: true
+    }));
   };
 
   return (
@@ -27,11 +35,18 @@ function Projects() {
         {projects.map((project) => (
           <div className="project-card" key={project.id}>
             <div className="project-image">
-              <img 
-                src={'/images/projects/'+project.images[0]} 
-                alt={project.title} 
-                onClick={() => openImageModal('/images/projects/'+project.images[0])}
-              />
+              {imageErrors[`${project.id}-0`] ? (
+                <div className="image-placeholder">
+                  <FiImage size={48} />
+                </div>
+              ) : (
+                <img 
+                  src={'/images/projects/'+project.images[0]} 
+                  alt={project.title} 
+                  onClick={() => openImageModal('/images/projects/'+project.images[0])}
+                  onError={() => handleImageError(project.id, 0)}
+                />
+              )}
             </div>
 
             <div className="project-content">
@@ -42,11 +57,18 @@ function Projects() {
               <div className="project-images-row">
                 {project.images.slice(1, 4).map((image, index) => (
                   <div className="project-thumbnail" key={index}>
-                    <img 
-                      src={'/images/projects/'+image} 
-                      alt={`${project.title} screenshot ${index + 1}`}
-                      onClick={() => openImageModal('/images/projects/'+image)}
-                    />
+                    {imageErrors[`${project.id}-${index+1}`] ? (
+                      <div className="thumbnail-placeholder">
+                        <FiImage size={24} />
+                      </div>
+                    ) : (
+                      <img 
+                        src={'/images/projects/'+image} 
+                        alt={`${project.title} screenshot ${index + 1}`}
+                        onClick={() => openImageModal('/images/projects/'+image)}
+                        onError={() => handleImageError(project.id, index+1)}
+                      />
+                    )}
                   </div>
                 ))}
               </div>
@@ -89,7 +111,14 @@ function Projects() {
             <button className="modal-close" onClick={closeImageModal}>
               <FiX />
             </button>
-            <img src={selectedImage} alt="Enlarged view" />
+            {selectedImage ? (
+              <img src={selectedImage} alt="Enlarged view" />
+            ) : (
+              <div className="modal-placeholder">
+                <FiImage size={64} />
+                <p>Image not available</p>
+              </div>
+            )}
           </div>
         </div>
       )}
