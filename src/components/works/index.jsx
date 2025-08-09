@@ -1,13 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './index.css';
-import { FiGithub, FiExternalLink } from 'react-icons/fi';
+import { FiGithub, FiExternalLink, FiX, FiImage } from 'react-icons/fi';
 import { FaReact, FaNodeJs } from 'react-icons/fa';
 import { SiTypescript, SiTailwindcss, SiNextdotjs } from 'react-icons/si';
 import projects from '../../data/Projects';
 
-
-
 function Works() {
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [imageErrors, setImageErrors] = useState({});
+
+  const openImageModal = (imageUrl) => {
+    setSelectedImage(imageUrl);
+  };
+
+  const closeImageModal = () => {
+    setSelectedImage(null);
+  };
+
+  const handleImageError = (projectId, imageIndex) => {
+    setImageErrors(prev => ({
+      ...prev,
+      [`${projectId}-${imageIndex}`]: true
+    }));
+  };
+
   return (
     <section className="works section__wrapper" id="works">
       <div className="section__header">
@@ -21,7 +37,18 @@ function Works() {
         {projects.map((project) => (
           <div className="project__card" key={project.id}>
             <div className="project__image">
-              <img src={project.image} alt={project.title} />
+              {imageErrors[`${project.id}-0`] ? (
+                <div className="image__placeholder">
+                  <FiImage size={48} />
+                </div>
+              ) : (
+                <img 
+                  src={'/images/projects/'+project.images[0]} 
+                  alt={project.title} 
+                  onClick={() => openImageModal('/images/projects/'+project.images[0])}
+                  onError={() => handleImageError(project.id, 0)}
+                />
+              )}
               <div className="project__overlay">
                 <div className="project__links">
                   <a href={project.github} target="_blank" rel="noopener noreferrer" className="project__link">
@@ -37,6 +64,29 @@ function Works() {
             <div className="project__content">
               <h3 className="project__title">{project.title}</h3>
               <p className="project__description">{project.description}</p>
+              
+              {/* Additional images row */}
+              <div className="project__thumbnails">
+                {project.images.slice(1, 4).map((image, index) => (
+                  <div 
+                    className="project__thumbnail" 
+                    key={index}
+                    onClick={() => openImageModal('/images/projects/'+image)}
+                  >
+                    {imageErrors[`${project.id}-${index+1}`] ? (
+                      <div className="thumbnail__placeholder">
+                        <FiImage size={24} />
+                      </div>
+                    ) : (
+                      <img 
+                        src={'/images/projects/'+image} 
+                        alt={`${project.title} screenshot ${index + 1}`}
+                        onError={() => handleImageError(project.id, index+1)}
+                      />
+                    )}
+                  </div>
+                ))}
+              </div>
               
               <div className="project__tech">
                 {project.tags.map((tag, index) => (
@@ -73,6 +123,25 @@ function Works() {
           </div>
         </div>
       </div>
+
+      {/* Image Modal */}
+      {selectedImage && (
+        <div className="image__modal" onClick={closeImageModal}>
+          <div className="modal__content" onClick={e => e.stopPropagation()}>
+            <button className="modal__close" onClick={closeImageModal}>
+              <FiX size={24} />
+            </button>
+            {selectedImage ? (
+              <img src={selectedImage} alt="Enlarged preview" />
+            ) : (
+              <div className="modal__placeholder">
+                <FiImage size={64} />
+                <p>Image not available</p>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </section>
   );
 }

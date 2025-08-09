@@ -5,10 +5,10 @@ const projects = [
     description: "An all-in-one vehicle renting service platform in Australia, offering seamless booking of cars, vans, and other vehicles. Features include real-time availability, secure user authentication, rental history tracking, and integrated payment processing for a smooth and convenient rental experience.",
     tags: ["Javascript (EJS)", "Node.js", "FireStore", "Stripe"],
     images: [
-      "vehicle-rental-main.jpg",
-      "vehicle-rental-1.jpg",
-      "vehicle-rental-2.jpg",
-      "vehicle-rental-3.jpg"
+      "ncn-logo.png",
+      "Screenshot_2025_08_09-1.png",
+      "Screenshot_2025_08_09-2.png",
+      "Screenshot_2025_08_09-4.png"
     ],
     github: "https://github.com",
     live: "https://example.com"
