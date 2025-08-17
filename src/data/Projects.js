@@ -39,7 +39,7 @@ const projects = [
       "Screenshot_2025_07_14-8.png"
     ],
     github: "https://github.com/hackishmax321/cattle_y_frontend.git",
-    live: "https://example.com"
+    live: "https://cattle-y-frontend.onrender.com"
   },
   {
     id: 4,
