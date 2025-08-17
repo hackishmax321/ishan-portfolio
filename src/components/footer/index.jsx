@@ -31,9 +31,9 @@ function Footer() {
             <div className="links-column">
               <h4 className="links-title">Connect</h4>
               <ul className="links-list">
-                <li><a href="mailto:hackishmax@gmail.com" className="footer-link">Email</a></li>
-                <li><a href="https://github.com" target="_blank" rel="noopener noreferrer" className="footer-link">GitHub</a></li>
-                <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="footer-link">LinkedIn</a></li>
+                <li><a href="mailto:ishangayantha998@gmail.com" className="footer-link">Email</a></li>
+                <li><a href="https://github.com/hackishmax321" target="_blank" rel="noopener noreferrer" className="footer-link">GitHub</a></li>
+                <li><a href="https://www.linkedin.com/in/ishan-gayantha-9b2352166" target="_blank" rel="noopener noreferrer" className="footer-link">LinkedIn</a></li>
                 <li><a href="/cv/Ishan_CV.pdf" target="_blank" className="footer-link">Resume</a></li>
               </ul>
             </div>
@@ -41,16 +41,16 @@ function Footer() {
         </div>
         
         <div className="footer-social">
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+          <a href="https://github.com/hackishmax321" target="_blank" rel="noopener noreferrer" className="social-icon">
             <FiGithub size={20} />
           </a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+          <a href="https://www.linkedin.com/in/ishan-gayantha-9b2352166" target="_blank" rel="noopener noreferrer" className="social-icon">
             <FiLinkedin size={20} />
           </a>
           <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon">
             <FiFacebook size={20} />
           </a>
-          <a href="mailto:you@example.com" className="social-icon">
+          <a href="mailto:ishangayantha998@gmail.com" className="social-icon">
             <FiMail size={20} />
           </a>
         </div>

@@ -34,13 +34,13 @@ function NavBar() {
           </div>
           
           <div className="nav-social">
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+            <a href="https://github.com/hackishmax321" target="_blank" rel="noopener noreferrer" className="social-icon">
               <FiGithub size={20} />
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+            <a href="https://www.linkedin.com/in/ishan-gayantha-9b2352166" target="_blank" rel="noopener noreferrer" className="social-icon">
               <FiLinkedin size={20} />
             </a>
-            <a href="mailto:you@example.com" className="social-icon">
+            <a href="mailto:ishangayantha998@gmail.com" className="social-icon">
               <FiMail size={20} />
             </a>
             <a href="/cv/Ishan_CV.pdf" target="_blank" rel="noopener noreferrer" className="social-icon">
