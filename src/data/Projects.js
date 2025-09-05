@@ -10,8 +10,8 @@ const projects = [
       "Screenshot_2025_09_05-2.png",
       "Screenshot_2025_09_05-3.png"
     ],
-    github: "https://github.com/pyxlelab/taxi-application.git",
-    live: "https://cairnscarrentals.com"
+    github: "https://github.com/hackishmax321/team-company-site.git",
+    live: "https://software-tech-solutions.onrender.com"
   },
   {
     id: 1,
