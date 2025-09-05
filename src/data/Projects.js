@@ -1,6 +1,20 @@
 const projects = [
   {
     id: 1,
+    title: "Software Tech Solutions (PVT)Ltd.",
+    description: "A web site functions as official website of Software Tech Solutions (PVT)Ltd.",
+    tags: ["React.js", "Node.js", "FireStore"],
+    images: [
+      "sts-logo.png",
+      "Screenshot_2025_09_05-1.png",
+      "Screenshot_2025_09_05-2.png",
+      "Screenshot_2025_09_05-3.png"
+    ],
+    github: "https://github.com/pyxlelab/taxi-application.git",
+    live: "https://cairnscarrentals.com"
+  },
+  {
+    id: 1,
     title: "Vehicle Renting Service",
     description: "An all-in-one vehicle renting service platform in Australia, offering seamless booking of cars, vans, and other vehicles. Features include real-time availability, secure user authentication, rental history tracking, and integrated payment processing for a smooth and convenient rental experience.",
     tags: ["Javascript (EJS)", "Node.js", "FireStore", "Stripe"],
